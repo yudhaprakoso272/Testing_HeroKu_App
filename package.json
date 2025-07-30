@@ -4,7 +4,10 @@
   "description": "",
   "main": "cypress.config.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "cypress run",
+    "report:merge": "npx mochawesome-merge cypress/reports/html/*.json > merged-report.json",
+    "report:generate": "npx marge merged-report.json --reportDir cypress/reports/html",
+    "test:html": "npm run test && npm run report:merge && npm run report:generate"
   },
   "repository": {
     "type": "git",
